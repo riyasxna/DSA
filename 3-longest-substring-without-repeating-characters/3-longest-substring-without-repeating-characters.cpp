@@ -1,5 +1,8 @@
 class Solution {
 public:
+    int max(int a,int b){
+return (a>b)?a:b;
+}
     int lengthOfLongestSubstring(string s) {
         int n=s.length();
         if(s.size()<=1)
@@ -14,15 +17,13 @@ public:
                 st.insert(s[j]);
             }
             else{
-                int r=st.size();
-                res=max(res,r);
+                res=max(res,st.size());
                 st.clear();
                 break;
             }
             
         }
     }
-        int m=st.size();
-        return max(res,m);
+        return max(res,st.size());
     }
 };
