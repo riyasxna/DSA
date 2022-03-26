@@ -27,3 +27,25 @@ public:
         return n;
     }
 };
+
+
+/**int cnt = 0, ans;
+void findInorder(TreeNode *root, int &k)
+{
+    if (root == NULL)
+        return;
+    findInorder(root->left, k);
+    cnt++;
+    if (cnt == k)
+    {
+        ans = root->val;
+        return;
+    }
+    findInorder(root->right, k);
+}
+int kthSmallest(TreeNode *root, int k)
+{
+    findInorder(root, k);
+    return ans;
+}
+*/
