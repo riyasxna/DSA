@@ -1,13 +1,15 @@
 class Solution {
 public:
     void dfs(int i,int& req,vector<int> adj[],vector<int>& visited){
+        if(visited[i]==1)
+            return;
         visited[abs(i)]=1;
         for(auto u:adj[i]){
             if(visited[abs(u)]==0){
                 if(u>0)
                     req++;
-            dfs(abs(u),req,adj,visited);
             }
+            dfs(abs(u),req,adj,visited);
         }   
     }
     
