@@ -18,8 +18,6 @@ public:
             }
                 if(color[u]==color[s])
                     return false;
-                if(color[u]==(-color[s]))
-                    continue;
             }
         }
         }
