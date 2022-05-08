@@ -9,7 +9,7 @@ using namespace std;
 // User function template for C++
 
 class Solution{
-    void recurse(int i,int j,int n,vector<vector<int>>& vis,string path,vector<vector<int>> &m,vector<string>& ans){
+    void recurse(int i,int j,int n,vector<vector<int>> vis,string path,vector<vector<int>> &m,vector<string>& ans){
         if(i==n-1 && j==n-1){
             ans.push_back(path);
             return;
@@ -17,22 +17,22 @@ class Solution{
         if(i+1<n && m[i+1][j]==1 && !vis[i+1][j]){
             vis[i][j]=1;
             recurse(i+1,j,n,vis,path+'D',m,ans);
-            vis[i][j]=0;
+            
         }
         if(j-1>=0 && m[i][j-1]==1 && !vis[i][j-1]){
             vis[i][j]=1;
             recurse(i,j-1,n,vis,path+'L',m,ans);
-            vis[i][j]=0;
+            
         }
         if(j+1<n && m[i][j+1]==1 && !vis[i][j+1]){
             vis[i][j]=1;
             recurse(i,j+1,n,vis,path+'R',m,ans);
-            vis[i][j]=0;
+            
         }
         if(i-1>=0 && m[i-1][j]==1 && !vis[i-1][j]){
             vis[i][j]=1;
             recurse(i-1,j,n,vis,path+'U',m,ans);
-            vis[i][j]=0;
+            
         }
     }
     
