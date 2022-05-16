@@ -8,8 +8,6 @@ public:
             count+=chalk[i];
         }
         k%=count;
-        if(k==0)
-            return 0;
         for(index=0;index<n;index++){
             if(chalk[index]<=k){
                 k-=chalk[index];
