@@ -6,7 +6,7 @@ public:
             int j=31;
             while(candidates[i]>0){
                 nums[j]+=candidates[i]%2;
-                candidates[i]/=2;
+                candidates[i]>>=1;
                 j--;
             }
         }
