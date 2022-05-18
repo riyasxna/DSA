@@ -21,9 +21,7 @@ public:
         }
         reverse(res.begin(),res.end());
         for(int i=0;i<prerequisites.size();i++){
-            auto a=find(res.begin(),res.end(),prerequisites[i][0]);
-            auto b=find(res.begin(),res.end(),prerequisites[i][1]);
-            if(a-b<=0)
+            if(find(res.begin(),res.end(),prerequisites[i][0])-find(res.begin(),res.end(),prerequisites[i][1])<=0)
                 return false;
         }
         return true;
