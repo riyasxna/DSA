@@ -19,8 +19,8 @@ public:
             seen[m]=1;
         }
         string ans="";
-        for(int i=0;i<v.size();i++){
-            ans+=v[i];
+        for(auto i=v.begin();i!=v.end();i++){
+            ans+=*i;
         }
         return ans;
     }
