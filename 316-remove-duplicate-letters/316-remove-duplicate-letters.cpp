@@ -20,9 +20,8 @@ public:
        
         string res="";
         while(!st.empty()){
-            char c=st.top();
+            res=res+st.top();
             st.pop();
-            res=res+c;
         }
         reverse(res.begin(),res.end());
         return res;
