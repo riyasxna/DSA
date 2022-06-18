@@ -7,23 +7,25 @@ class Solution{
 	
 	
 	public:
-	long long countTriplets(long long a[], int n, long long sum)
+	long long countTriplets(long long arr[], int n, long long sum)
 	{
 	    // Your code goes here
-	    sort(a, a+n);
-	    long long ans = 0;
-	    for(long long i=0; i<n-2; i++){
-	        long long l = i+1;
-	        long long r = n-1;
-	        while(l<r){
-	            long long currSum = a[i] + a[l] + a[r];
-	            if(currSum < sum){
-	                ans += r - l;
-	                l++;
-	            } else r--;
+	    sort(arr,arr+n);
+	     long long i,j,k,res=0;
+	     for(i=0;i<n-2;i++){
+	        j=i+1;
+	        k=n-1;
+	        while(j<k){
+	            if(arr[i]+arr[j]+arr[k]<sum){
+	                res+=k-j;
+	                j++;
+	            }
+	            else{
+	                k--;
+	            }
 	        }
-	    }
-	    return ans;
+	     }
+	     return res;
 	}
 		 
 
