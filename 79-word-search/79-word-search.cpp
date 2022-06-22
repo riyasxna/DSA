@@ -1,33 +1,27 @@
 class Solution {
 public:
-    int vis[10][10];
-    
-    bool dfs(vector<vector<char>>& board, int i, int j, string word, string temp){
-        if(i<0 || j<0 || i>=board.size() || j>=board[0].size() || board[i][j] != word[temp.size()] || vis[i][j]){
-            return false;
-        }
-        temp += board[i][j];
-        vis[i][j] = 1;
-        if(temp == word)
+    bool isPresent(vector<vector<char>>& m , int r, int c, int p, int q, string s, int pos){
+        if(pos==s.length())
             return true;
-        bool a = dfs(board, i+1, j, word, temp);
-        bool b = dfs(board, i-1, j, word, temp);
-        bool c = dfs(board, i, j+1, word, temp);
-        bool d = dfs(board, i, j-1, word, temp);
-        vis[i][j] = 0;
-        return (a || b || c || d);
+        if(r<0 || r>p || c<0 || c>q || s[pos]!=m[r][c])
+            return false;
+        char ch=s[pos];
+        m[r][c]=' ';
+        bool found= isPresent(m,r, c-1,p,q,s,pos+1)|| isPresent(m,r,c+1,p,q,s,pos+1)||
+                        isPresent(m,r-1,c,p,q,s,pos+1)|| isPresent(m,r+1,c,p,q,s,pos+1);
+        m[r][c]=ch;
+        return found;
     }
     
+    
     bool exist(vector<vector<char>>& board, string word) {
-        int n = board.size(), m = board[0].size();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(board[i][j]==word[0]){
-                    if(dfs(board, i, j, word, ""))
-                        return true;    
-                }
+        for(int i=0;i<board.size();i++){
+            for(int j=0;j<board[0].size();j++){
+                if(board[i][j]==word[0] && isPresent(board,i,j,board.size()-1,board[0].size()-1,word,0))
+                    return true;
             }
         }
         return false;
+        
     }
 };
