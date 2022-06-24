@@ -7,16 +7,8 @@ public:
             mid=(l+r)/2;
             long long i=0,count=0;
             while(i<piles.size()){
-                if(piles[i]<=mid){
-                    count++;
-                    i++;
-                }
-                else{
-                    count+=piles[i]/mid;
-                    if(piles[i]%mid!=0)
-                        count++;
-                    i++;
-                }
+                count+=piles[i]/mid + (piles[i]%mid!=0);
+                i++; 
             }
             if(count<=h){
                 k=min(k,mid);
