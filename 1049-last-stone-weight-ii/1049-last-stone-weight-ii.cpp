@@ -24,7 +24,7 @@ public:
         }
         for(int j=1;j<=sum/2;j++){
             if(dp[n][j]==1)
-                res=min(res,abs(sum-2*j));
+                res=min(res,sum-2*j);
         }
         return res;
     }
