@@ -5,7 +5,7 @@ public:
         string res="";
         int value=-1;
         for(int i=0;i<messages.size();i++){
-            um[senders[i]]+=count(begin(messages[i]), end(messages[i]), ' ')+1;
+            um[senders[i]]+=count(messages[i].begin(), messages[i].end(), ' ')+1;
         }
         for(auto it:um){
             if(it.second>value){
