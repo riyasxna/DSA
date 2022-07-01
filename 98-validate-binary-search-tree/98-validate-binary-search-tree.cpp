@@ -10,23 +10,18 @@
  * };
  */
 class Solution {
+    TreeNode* prev=NULL;
 public:
-    long pre;
-    bool result(TreeNode* root){
-        if(root==NULL)
-            return true;
-        bool ans=result(root->left);
-        if(ans==0)
-            return false;
-        if(root->val<=pre)
-            return false;
-        if(root->val>pre)
-            pre=root->val;
-        return result(root->right);
-    }
-    
     bool isValidBST(TreeNode* root) {
-        pre=LONG_MIN;
-        return result(root);
+        if(!root)
+            return true;
+        if(!isValidBST(root->left))
+            return false;
+        if(prev && prev->val>=root->val)
+            return false;
+        prev=root;
+        if(!isValidBST(root->right))
+            return false;
+        return true;
     }
 };
