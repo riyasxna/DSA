@@ -19,8 +19,8 @@ public:
     bool canPartitionKSubsets(vector<int>& nums, int k) {
         int total=0;
         total=accumulate(nums.begin(),nums.end(),total);
-        int highest=*max_element(nums.begin(),nums.end());
-        if(total%k!=0 || highest>total/k)
+        sort(nums.rbegin(),nums.rend());
+        if(total%k!=0 || nums[0]>total/k)
             return false;
         vector<int> visited(nums.size(),0);
         return recurse(nums,visited,0,0,k,total/k);
