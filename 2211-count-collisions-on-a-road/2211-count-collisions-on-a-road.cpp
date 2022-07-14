@@ -1,36 +1,14 @@
 class Solution {
 public:
-    int countCollisions(string d) {
-        int res=0;
-        stack<char> st;
-        for(int i=0;i<d.size();i++){
-            if(st.empty() || d[i]=='R'){
-                st.push(d[i]);
-            }
-            else if(d[i]=='L'){
-                if(st.top()=='R'){
-                    res+=2;
-                    st.pop();
-                    while(!st.empty() && st.top()=='R'){
-                        res++;
-                        st.pop();
-                    }
-                    st.push('S');
-                }
-                else if(st.top()=='S'){
-                    res++;
-                }
-            }
-            else if(d[i]=='S'){
-                if(st.top()=='R'){
-                    res++;
-                    st.pop();
-                    while(!st.empty() && st.top()=='R'){
-                        res++;
-                        st.pop();
-                    }
-                }
-                st.push('S');
+    int countCollisions(string dir) {
+        int res(0), n(size(dir)), i(0), carsFromRight(0);
+        
+        while (i < n and dir[i] == 'L') i++; 
+        for ( ; i<n; i++) {
+            if (dir[i] == 'R')  carsFromRight++;
+            else {
+                res += (dir[i] == 'S') ? carsFromRight : carsFromRight+1;
+                carsFromRight = 0;
             }
         }
         return res;
