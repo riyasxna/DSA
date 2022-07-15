@@ -14,7 +14,7 @@ public:
         for(int i=0;i<=2;i++)
         dp[i]=i;
         for(int i=3;i<=n;i++){
-            dp[i]=(dp[i-1]%mod + (((i-1)%mod)*(dp[i-2]%mod))%mod)%mod;
+            dp[i]=(dp[i-1]%mod + (((i-1)%mod)*(dp[i-2]%mod)))%mod;
         }
         return dp[n];
     }
