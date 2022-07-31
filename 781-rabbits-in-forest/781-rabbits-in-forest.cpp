@@ -5,20 +5,13 @@ public:
         int curr=answers[0], res=answers[0]+1;
         int count=curr;
         for(int i=1;i<answers.size();i++){
-            if(count==0){
+            if(count==0 || curr!=answers[i]){
                 curr=answers[i];
                 res+=answers[i]+1;
                 count=curr;
             }
-            else{
-                if(curr==answers[i])
-                    count--;
-                else{
-                    curr=answers[i];
-                    res+=answers[i]+1;
-                    count=curr;
-                }
-            }
+            else
+                count--;
         }
         return res;
     }
