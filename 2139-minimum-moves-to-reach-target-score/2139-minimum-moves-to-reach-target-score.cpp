@@ -5,6 +5,8 @@ public:
         if(d==0)
             return target-1;
         while(target!=1){
+            if(d==0)
+            return target-1+moves;
             if(target%2){
                 target--;
             }
